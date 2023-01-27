@@ -1,0 +1,9 @@
+name: 'java'
+description: 'java'
+inputs:
+  test_str:
+    description: '起動時に出力する文字列'
+    required: true
+runs:
+  using: "docker"
+  image: .github/internal-action/Dockerfile

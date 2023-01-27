@@ -1,0 +1,28 @@
+name: 'handle-image-version'
+description: 'java'
+inputs:
+  java_version:
+    description: 'java version'
+    required: true
+    default: 'latest'
+  test_str:
+    description: '起動時に出力する文字列'
+    required: true
+runs:
+  using: "composite"
+  steps:
+    - run: pwd
+      shell: bash
+    - run: ls -a
+      shell: bash
+    - run: env
+      shell: bash
+    - run: echo ${{ github.action_path }}
+      shell: bash
+    - run: sed -i "s/\$INPUT_IMAGE_TAG/${{ inputs.java_version }}/g" .github/internal-action/Dockerfile
+      shell: bash
+    - run: cat .github/internal-action/Dockerfile
+      shell: bash
+    - uses: .github/internal-action/action.yaml
+      with:
+        test_str: ${{ inputs.test_str }}

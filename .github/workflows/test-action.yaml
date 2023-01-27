@@ -1,0 +1,16 @@
+name: test action
+
+on:
+  workflow_dispatch:
+  push:
+
+jobs:
+  test:
+    name: test-action
+    runs-on: ubuntu-22.04
+    steps:
+      - uses: actions/checkout@v3
+      - uses: kazuo278/composite-action@main
+        with:
+          java_version: 11-jdk
+          test_str: Hello Java with Composite Action
