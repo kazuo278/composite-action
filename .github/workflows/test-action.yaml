@@ -5,12 +5,20 @@ on:
   push:
 
 jobs:
+  set-env:
+    runs-on: ubuntu-22.04
+    outputs:
+      refs: ${{ steps.refs.outputs.value }}
+    steps:
+      - id: refs
+        run: echo "value=develop" >> $GITHUB_OUTPUT
   test:
     name: test-action
     runs-on: ubuntu-22.04
+    needs: [set-env]
     steps:
       - uses: actions/checkout@v3
-      - uses: kazuo278/composite-action@develop
+      - uses: kazuo278/composite-action@${{ needs.set-env.outputs.refs }}
         with:
           java_version: 11-jdk
           test_str: Hello Java with Composite Action

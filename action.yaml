@@ -23,6 +23,6 @@ runs:
       shell: bash
     - run: cat .github/internal-action/Dockerfile
       shell: bash
-    - uses: .github/internal-action/
-      with:
-        test_str: ${{ inputs.test_str }}
+    # - uses: .github/internal-action/
+    #   with:
+    #     test_str: ${{ inputs.test_str }}
