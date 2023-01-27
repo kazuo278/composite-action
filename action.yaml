@@ -23,6 +23,7 @@ runs:
       shell: bash
     - run: cat .github/internal-action/Dockerfile
       shell: bash
+    # composite actionから同一リポジトリの別のactionは呼べない
     # - uses: .github/internal-action/
     #   with:
     #     test_str: ${{ inputs.test_str }}
