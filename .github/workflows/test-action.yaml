@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-22.04
     steps:
       - uses: actions/checkout@v3
-      - uses: kazuo278/composite-action@main
+      - uses: kazuo278/composite-action@develop
         with:
           java_version: 11-jdk
           test_str: Hello Java with Composite Action
